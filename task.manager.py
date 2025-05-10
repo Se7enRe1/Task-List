@@ -60,14 +60,14 @@ while choice != 4:
             if not lines:
                 print("\nNo tasks yet.")
             else:
-                for i, task in enumerate(lines):
+                for i, task in enumerate(lines,start=1):
                     print(f"{i}: {task.strip()}")
             delete = str(input("\nWhich task do you want deleted?(insert a number): "))
             if delete.isdigit():
                 delete = int(delete)
             with open(filer, "r") as file:
                 lines = file.readlines()
-            if delete <= len(lines):
+            if 1 <= delete <= len(lines):
                 del lines[delete-1]
                 with open(filer, "w") as file:
                     file.writelines(lines)
